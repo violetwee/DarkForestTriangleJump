@@ -1,7 +1,7 @@
 pragma circom 2.0.0;
 
-include "./circomlib/bitify.circom";
-include "./circomlib/mimcsponge.circom";
+include "../circomlib/bitify.circom";
+include "../circomlib/mimcsponge.circom";
 
 /*
     This circuit verifies that a player's move from coordinates A->B->C is valid.
