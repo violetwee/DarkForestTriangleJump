@@ -10,6 +10,18 @@ Consider a hypothetical move called the ‘triangle jump’, a player hops from 
 
 Write a Circom circuit that verifies this move. The coordinates of A, B, and C are private inputs. You may need to use basic geometry to ascertain that the move lies on a triangle. Also, verify that the move distances (A → B and B → C) are within the energy bounds.
 
+## Testing
+
+There are 3 JSON files:
+input.json - Valid inputs for a triangle jump
+input_line.json - Invalid inputs that form a line, instead of a triangle
+input_low_energy.json - Invalid energy input
+
+From the root directory, run:
+`./compile.sh -f move -j input.json`
+
+To test that invalid inputs should fail the circuit, replace the input.json parameter with input_line.json or input_low_energy.json.
+
 ## Libraries
 
 The circom circuit uses the following circuits from the circomlib repo (https://github.com/iden3/circomlib):
