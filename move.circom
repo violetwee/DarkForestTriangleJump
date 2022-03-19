@@ -1,6 +1,7 @@
 pragma circom 2.0.0;
 
 include "./circomlib/bitify.circom";
+include "./circomlib/mimcsponge.circom";
 
 /*
     This circuit verifies that a player's move from coordinates A->B->C is valid.
@@ -72,7 +73,7 @@ template Main() {
   signal input y3;
   signal input r;
   signal input energy;
-  signal output valid;
+  signal output new_location;
 
   // (1): Check that coordinates B and C (new coordinates) are within the play circle (boundary)
     // check x2^2 + y2^2 <= r^2 and x3^2 + y3^2 <= r^2
@@ -123,7 +124,12 @@ template Main() {
   hopBC.energy <== energy;
   hopBC.out === 1;
 
-  valid <== 1;
+  // hash location coordinates to store as commitment
+  component mimc = MiMCSponge(2, 220, 1);
+  mimc.ins[0] <== x1;
+  mimc.ins[1] <== y1;
+  mimc.k <== 0;
+  new_location <== mimc.outs[0];
 }
 
 component main = Main();

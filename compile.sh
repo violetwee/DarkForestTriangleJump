@@ -45,4 +45,4 @@ snarkjs groth16 prove ${filename}_0001.zkey witness.wtns proof.json public.json
 snarkjs groth16 verify verification_key.json public.json proof.json
 
 # Generate solidity verifier 
-# snarkjs zkey export solidityverifier ${filename}_0001.zkey verifier.sol
+snarkjs zkey export solidityverifier ${filename}_0001.zkey verifier.sol
