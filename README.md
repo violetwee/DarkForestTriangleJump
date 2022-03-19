@@ -12,16 +12,26 @@ Write a Circom circuit that verifies this move. The coordinates of A, B, and C a
 
 ## Testing
 
+### Compile and test circom circuit
+
 There are 3 JSON files:
 
 1. input.json - Valid inputs for a triangle jump
 2. input_line.json - Invalid inputs that form a line, instead of a triangle
 3. input_low_energy.json - Invalid energy input
 
-From the root directory, run:
+From the circuits directory, run:
 `./compile.sh -f move -j input.json`
+Then run `snarkjs generatecall` to obtain test inputs for the verifier.
 
 To test that invalid inputs should fail the circuit, replace the input.json parameter with input_line.json or input_low_energy.json.
+
+### Compile and test smart contracts
+
+1. Copy and paste the code from Verifier.sol to Remix. Compile and deploy the Verifier.
+2. Copy and paste the code from Location.sol to Remix. Compile and deploy the Location contract using the Verifier's contract address from Step 1.
+3. Copy and paste the test inputs from `move` circuit's `snarkjs generatecall` to the `performTriangleJump` field and click on `performTriangleJump`.
+4. Click on `getPlayerLocation`. There should be one location hash.
 
 ## Libraries
 
