@@ -13,9 +13,10 @@ Write a Circom circuit that verifies this move. The coordinates of A, B, and C a
 ## Testing
 
 There are 3 JSON files:
-input.json - Valid inputs for a triangle jump
-input_line.json - Invalid inputs that form a line, instead of a triangle
-input_low_energy.json - Invalid energy input
+
+1. input.json - Valid inputs for a triangle jump
+2. input_line.json - Invalid inputs that form a line, instead of a triangle
+3. input_low_energy.json - Invalid energy input
 
 From the root directory, run:
 `./compile.sh -f move -j input.json`
